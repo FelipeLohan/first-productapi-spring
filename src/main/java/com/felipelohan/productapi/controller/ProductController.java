@@ -25,4 +25,15 @@ public class ProductController {
         return prod;
     }
 
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable("id") String id){
+        return productRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable("id") String id){
+        productRepository.deleteById(id);
+        return "Product Deleted";
+    }
+
 }
